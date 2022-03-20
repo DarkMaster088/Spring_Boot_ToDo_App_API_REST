@@ -7,6 +7,7 @@ import com.oag.todoapp.persistence.entity.TaskStatus;
 import com.oag.todoapp.persistence.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -31,5 +32,10 @@ public class TaskService {
 
     public List<Task> findAllByTaskStatus(TaskStatus status) {
         return this.repository.findAllByTaskStatus(status);
+    }
+
+    @Transactional
+    public void finishTask(Long id){
+        this.repository.finishTask(id);
     }
 }
