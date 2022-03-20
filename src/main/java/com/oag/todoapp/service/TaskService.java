@@ -1,14 +1,17 @@
 package com.oag.todoapp.service;
 
 import com.oag.todoapp.dto.TaskInDTO;
+import com.oag.todoapp.exceptions.ToDoExceptions;
 import com.oag.todoapp.mapper.TaskInDTOToTask;
 import com.oag.todoapp.persistence.entity.Task;
 import com.oag.todoapp.persistence.entity.TaskStatus;
 import com.oag.todoapp.persistence.repository.TaskRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -36,6 +39,10 @@ public class TaskService {
 
     @Transactional
     public void finishTask(Long id){
+        Optional<Task> optionalTask = this.repository.findById(id);
+        if(optionalTask.isEmpty()){
+            throw new ToDoExceptions("ID not found", HttpStatus.NOT_FOUND);
+        }
         this.repository.finishTask(id);
     }
 }
