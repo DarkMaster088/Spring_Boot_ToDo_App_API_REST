@@ -3,6 +3,7 @@ package com.oag.todoapp.service;
 import com.oag.todoapp.dto.TaskInDTO;
 import com.oag.todoapp.mapper.TaskInDTOToTask;
 import com.oag.todoapp.persistence.entity.Task;
+import com.oag.todoapp.persistence.entity.TaskStatus;
 import com.oag.todoapp.persistence.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,9 @@ public class TaskService {
 
     public List<Task> getAllTasks(){
         return this.repository.findAll();
+    }
+
+    public List<Task> findAllByTaskStatus(TaskStatus status) {
+        return this.repository.findAllByTaskStatus(status);
     }
 }
