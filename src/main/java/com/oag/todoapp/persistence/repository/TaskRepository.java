@@ -1,7 +1,7 @@
 package com.oag.todoapp.persistence.repository;
 
-import com.oag.todoapp.persistence.entity.TaskEntity;
+import com.oag.todoapp.persistence.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 }

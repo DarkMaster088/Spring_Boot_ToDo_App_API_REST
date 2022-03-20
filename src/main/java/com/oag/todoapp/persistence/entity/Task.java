@@ -1,13 +1,11 @@
 package com.oag.todoapp.persistence.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
-public class TaskEntity {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,10 +17,10 @@ public class TaskEntity {
     private boolean finished;
     private TaskStatus taskStatus;
 
-    public TaskEntity() {
+    public Task() {
     }
 
-    public TaskEntity(Long id, String title, String description, LocalDateTime createdDate, LocalDateTime eta, boolean finished, TaskStatus taskStatus) {
+    public Task(Long id, String title, String description, LocalDateTime createdDate, LocalDateTime eta, boolean finished, TaskStatus taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
